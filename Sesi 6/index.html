@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css"/>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SESI 6</title>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a onclick="reRender()" id="home">HOME</a>
+            <a id="dark" onclick="darkMode()">DARK MODE</a>
+            <a id="light" onclick="lightMode()">LIGHT MODE</a>
+            <a id="red" onclick="redMode()">PDIP MODE</a>
+        </nav>
+        <h1>KURO NEKO</h1>
+        <p class="info" id="info"></p>
+    </div>
+
+<!-- javascript -->
+<script>
+    let body = document.body;
+    let info  = document.getElementById("info");
+    let dark = document.getElementById("dark");
+    let home = document.getElementById("home");
+    let light = document.getElementById("light");
+    let red = document.getElementById("red");
+
+    const darkLimit = 5;
+    const redLimit = 5;
+    let darkCounter = 0;
+    let redCounter = 0;
+    let darkRemainingLeft;
+    let redRemainingLeft;
+
+    light.style.display = "none";
+    function darkMode(){
+        if(darkRemainingLeft == 1){
+            info.textContent = "✨JATAH FITUR DARK MODE ANDA SUDAH HABIS✨";
+            home.textContent = "RESTART";
+            return;
+        }
+        darkCounter += 1;
+        darkRemainingLeft = darkLimit - darkCounter;
+        body.classList.add("dark");
+        body.classList.remove("light");
+        red.style.display = "none";
+        dark.style.display = "none";
+        light.style.display = "block";
+
+        // render ke info element
+        info.textContent = `Darkmode dipakai ${darkCounter}x, tersisa${darkRemainingLeft}`
+    }
+    function redMode(){
+        if(redRemainingLeft == 1){
+            info.textContent = "✨JATAH FITUR PDIP MODE ANDA SUDAH HABIS✨";
+            home.textContent = "RESTART";
+            return;
+        }
+        redCounter += 1;
+        redRemainingLeft = redLimit - redCounter;
+        body.classList.add("red");
+        body.classList.remove("light");
+        body.classList.remove("dark");
+        dark.style.display = "none";
+        red.style.display = "none";
+        light.style.display = "block";
+
+        // render ke info element
+        info.textContent = `PDIPMode dipakai ${redCounter}x, tersisa${redRemainingLeft}`
+    }
+
+    function lightMode(){
+        body.classList.add("light");
+        body.classList.remove("red");
+        body.classList.remove("dark");
+        red.style.display = "block";
+        light.style.display = "none";
+        dark.style.display = "block";
+    }
+
+    function reRender(){
+        location.reload();
+    }
+</script>
+
+
+
+</body>
+</html>
