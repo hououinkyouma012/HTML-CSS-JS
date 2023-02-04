@@ -1,0 +1,18 @@
+{
+  "name": "belajar-website-sesi-7",
+  "version": "1.0.0",
+  "description": "belajar website sesi 7",
+  "main": "index.js",
+  "scripts": {
+    "jnck": "nodemon index.js"
+  },
+  "keywords": [
+    "hkj"
+  ],
+  "author": "kuroneko",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^2.0.20",
+    "rupiah-format": "^1.0.0"
+  }
+}
